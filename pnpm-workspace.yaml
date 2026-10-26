@@ -1,0 +1,10 @@
+packages:
+  - "."
+
+allowBuilds:
+  esbuild: true
+
+peerDependencyRules:
+  allowedVersions:
+    obsidian: ">=1.8.7"
+    eslint: ">=9.19.0"

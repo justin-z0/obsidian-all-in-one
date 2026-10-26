@@ -1,0 +1,9 @@
+{
+  "id": "all-in-one",
+  "name": "All in One",
+  "version": "0.1.0",
+  "minAppVersion": "1.13.1",
+  "description": "A modular collection of independently toggleable features.",
+  "author": "Justin",
+  "isDesktopOnly": false
+}

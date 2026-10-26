@@ -1,0 +1,46 @@
+.aio-feature-group {
+  margin-top: 8px;
+}
+
+.aio-attachment-position {
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.aio-attachment-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.aio-attachment-name-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.aio-attachment-name-ext {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.aio-attachment-error {
+  display: none;
+  color: var(--text-error);
+  margin-top: 8px;
+}
+
+.aio-attachment-error.is-visible {
+  display: block;
+}
+
+.aio-hidden-input {
+  display: none;
+}
+
+.aio-attachment-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}

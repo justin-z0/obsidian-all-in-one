@@ -1,0 +1,37 @@
+{
+  "name": "all-in-one",
+  "version": "0.1.0",
+  "description": "A modular Obsidian plugin with independently toggleable features.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "pnpm typecheck && node esbuild.config.mjs production",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "check:release": "node scripts/check-release.mjs",
+    "check:docs": "node scripts/check-docs.mjs"
+  },
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "attachments"
+  ],
+  "author": "Justin",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@12.5.1",
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "esbuild": "^0.25.12",
+    "eslint": "^9.39.5",
+    "eslint-plugin-obsidianmd": "^0.4.2",
+    "obsidian": "1.13.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
