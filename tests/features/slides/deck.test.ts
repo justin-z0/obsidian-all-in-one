@@ -1,3 +1,4 @@
+/** Pure pagination and frontmatter tests for the slides feature. */
 import { describe, expect, it } from 'vitest';
 import {
   formatBreadcrumb,

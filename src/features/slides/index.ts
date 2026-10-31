@@ -1,3 +1,4 @@
+/** Feature entry: registers commands, ribbon, and file menu, and owns the active presentation. */
 import { Notice, TFile } from 'obsidian';
 import type { Menu, TAbstractFile } from 'obsidian';
 import type { FeatureDefinition } from '../../core/feature';

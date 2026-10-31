@@ -1,3 +1,4 @@
+/** Lifecycle and entry-point tests for the slides feature. */
 import { describe, expect, it } from 'vitest';
 import { Notice, TFile } from 'obsidian';
 import type { App, Menu } from 'obsidian';

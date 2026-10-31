@@ -1,3 +1,4 @@
+/** Feature settings: defaults, separator validation, and declarative setting rows. */
 import type { FeatureSetting } from '../../core/feature';
 import { t } from '../../i18n';
 import type { SlidesOptions } from './types';

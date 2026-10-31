@@ -1,3 +1,4 @@
+/** Pagination rules: maps rendered top-level blocks to H1 section pages and H2 content pages. */
 import type {
   Block,
   ContentSlidePlan,

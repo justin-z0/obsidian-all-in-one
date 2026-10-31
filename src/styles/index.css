@@ -1,3 +1,4 @@
+/* Aggregate feature styles into the plugin stylesheet. */
 @import '../features/slides/styles.css';
 
 .aio-feature-group {

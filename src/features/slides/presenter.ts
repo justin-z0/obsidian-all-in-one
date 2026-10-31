@@ -1,3 +1,4 @@
+/** Presentation UI: full-screen modal, keyboard/pointer navigation, auto-fit, and cleanup. */
 import { Component, Modal, Notice } from 'obsidian';
 import type { App, KeymapEventHandler, TFile } from 'obsidian';
 import { t } from '../../i18n';

@@ -1,3 +1,4 @@
+/** Defaults and validation tests for slide settings. */
 import { describe, expect, it } from 'vitest';
 import { isControlSetting } from '../../../src/core/feature';
 import {

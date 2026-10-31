@@ -1,3 +1,4 @@
+/** Rendering pipeline: render the whole note, partition its top-level DOM, and build full-screen slides. */
 import { Component, MarkdownRenderer } from 'obsidian';
 import type { App, TFile } from 'obsidian';
 import { formatBreadcrumb, planSlides, stripFrontmatter } from './deck';

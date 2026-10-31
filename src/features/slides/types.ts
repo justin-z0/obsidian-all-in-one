@@ -1,3 +1,4 @@
+/** Shared types for settings, rendered blocks, and slide plans. */
 export type SlidesColorScheme = 'vault' | 'light' | 'dark';
 export type SlidesTransition = 'fade' | 'none';
 
