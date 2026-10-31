@@ -4,8 +4,8 @@ node_modules/
 pnpm-store/
 
 # Build output
-main.js
-styles.css
+/main.js
+/styles.css
 *.js.map
 dist/
 build/

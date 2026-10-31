@@ -174,6 +174,10 @@ export class MarkdownView {
   }
 }
 
+export class MarkdownRenderer {
+  static async render() {}
+}
+
 export class Plugin {
   constructor(app, manifest) {
     this.app = app;

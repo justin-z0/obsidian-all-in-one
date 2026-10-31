@@ -1,8 +1,8 @@
 # 架构设计
 
-> **状态**：实现基线 v0.1（2026-10-26）。脚手架、核心架构、“附件管理”和“笔记漫游”特性已落地；本文描述后续特性应遵循的架构约定。
+> **状态**：实现基线 v0.1（2026-10-26）；“Markdown 演示”于 2026-10-29 加入。脚手架、核心架构和三个特性已落地；本文描述后续特性应遵循的架构约定。
 >
-> 当前注册表包含 [附件管理](features/attachments.md) 和 [笔记漫游](features/note-roaming.md)，附件路径与命名策略见 [ADR 0006](adr/0006-attachment-path-policy.md)。
+> 当前注册表包含 [附件管理](features/attachments.md)、[笔记漫游](features/note-roaming.md) 和 [Markdown 演示](features/slides.md)；附件路径与命名策略见 [ADR 0006](adr/0006-attachment-path-policy.md)，演示页的 DOM 分区策略见 [ADR 0007](adr/0007-dom-rendered-slides.md)。
 >
 > **本文回答**：插件整体如何分层？模块之间允许怎样依赖？每个特性如何被定义、启用、配置和清理？关键设计为什么这样选？
 

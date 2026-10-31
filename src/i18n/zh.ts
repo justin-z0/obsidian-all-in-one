@@ -94,4 +94,40 @@ export const zh: Record<MessageKey, string> = {
     '没有可漫游的 Markdown 笔记，请检查漫游路径。',
   'features.note-roaming.notice.openFailed':
     '打开随机笔记失败：{message}',
+
+  'features.slides.name': 'Markdown 演示',
+  'features.slides.description':
+    '按标题层级把当前笔记转换为全屏演示页：H1 为主题页，H2 为正文页，无需添加分隔线。',
+  'features.slides.showBreadcrumb': '显示正文页页眉',
+  'features.slides.showBreadcrumbDesc':
+    '默认关闭；打开后在正文页顶部显示“一级菜单-二级菜单”。',
+  'features.slides.breadcrumbSeparator': '页眉分隔符',
+  'features.slides.breadcrumbSeparatorDesc':
+    '连接一级和二级标题，默认“-”；最多 3 个字符。',
+  'features.slides.showPageNumber': '显示页码',
+  'features.slides.showProgress': '显示进度条',
+  'features.slides.autoFit': '自动缩放内容',
+  'features.slides.autoFitDesc':
+    '内容超出页面时自动缩小字号，最低 50%；关闭后改为页内滚动。',
+  'features.slides.colorScheme': '配色',
+  'features.slides.colorSchemeDesc':
+    '跟随 Obsidian 主题，或强制浅色/深色画布。',
+  'features.slides.transition': '翻页动画',
+  'features.slides.transitionNone': '无',
+  'features.slides.transitionFade': '淡入',
+  'features.slides.colorVault': '跟随主题',
+  'features.slides.colorLight': '浅色',
+  'features.slides.colorDark': '深色',
+  'features.slides.command.present': '演示当前笔记',
+  'features.slides.ribbon': '演示当前笔记',
+  'features.slides.menu.present': '演示此笔记',
+  'features.slides.notice.noActiveNote':
+    '请先打开一篇 Markdown 笔记，再开始演示。',
+  'features.slides.notice.emptyNote': '这篇笔记没有可演示的内容。',
+  'features.slides.notice.loading': '正在准备演示…',
+  'features.slides.notice.renderFailed': '演示渲染失败：{message}',
+  'features.slides.validation.separatorEmpty': '页眉分隔符不能为空。',
+  'features.slides.validation.separatorTooLong': '页眉分隔符最多 3 个字符。',
+  'features.slides.aria.previous': '上一页',
+  'features.slides.aria.next': '下一页',
 };

@@ -101,6 +101,45 @@ export const en = {
     'No Markdown notes to roam. Check the roaming paths.',
   'features.note-roaming.notice.openFailed':
     'Failed to open a random note: {message}',
+
+  'features.slides.name': 'Markdown Slides',
+  'features.slides.description':
+    'Turn the current note into a full-screen deck by heading level: H1 becomes a section page and H2 a content page, with no separators required.',
+  'features.slides.showBreadcrumb': 'Show content page header',
+  'features.slides.showBreadcrumbDesc':
+    'Display “section-subsection” at the top of each content page. Off by default.',
+  'features.slides.breadcrumbSeparator': 'Header separator',
+  'features.slides.breadcrumbSeparatorDesc':
+    'Joins the section and subsection headings. Defaults to “-”; at most 3 characters.',
+  'features.slides.showPageNumber': 'Show page number',
+  'features.slides.showProgress': 'Show progress bar',
+  'features.slides.autoFit': 'Auto-fit content',
+  'features.slides.autoFitDesc':
+    'Shrink text down to 50% when a page overflows; turn off to scroll inside the page.',
+  'features.slides.colorScheme': 'Color scheme',
+  'features.slides.colorSchemeDesc':
+    'Follow the Obsidian theme, or force a light or dark canvas.',
+  'features.slides.transition': 'Slide transition',
+  'features.slides.transitionNone': 'None',
+  'features.slides.transitionFade': 'Fade',
+  'features.slides.colorVault': 'Follow theme',
+  'features.slides.colorLight': 'Light',
+  'features.slides.colorDark': 'Dark',
+  'features.slides.command.present': 'Present current note',
+  'features.slides.ribbon': 'Present current note',
+  'features.slides.menu.present': 'Present this note',
+  'features.slides.notice.noActiveNote':
+    'Open a Markdown note before starting a presentation.',
+  'features.slides.notice.emptyNote': 'This note has nothing to present.',
+  'features.slides.notice.loading': 'Preparing presentation…',
+  'features.slides.notice.renderFailed':
+    'Failed to render the presentation: {message}',
+  'features.slides.validation.separatorEmpty':
+    'The header separator cannot be empty.',
+  'features.slides.validation.separatorTooLong':
+    'The header separator can be at most 3 characters.',
+  'features.slides.aria.previous': 'Previous slide',
+  'features.slides.aria.next': 'Next slide',
 } as const;
 
 export type MessageKey = keyof typeof en;

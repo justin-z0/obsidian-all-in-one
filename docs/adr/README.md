@@ -61,3 +61,4 @@
 | [0004](0004-versioned-settings.md) | 版本化设置与迁移 | 已接受 |
 | [0005](0005-independent-features.md) | 特性互相独立 | 已接受 |
 | [0006](0006-attachment-path-policy.md) | 附件路径与命名策略 | 已接受 |
+| [0007](0007-dom-rendered-slides.md) | 整篇渲染后按 DOM 分区生成演示页 | 已接受 |

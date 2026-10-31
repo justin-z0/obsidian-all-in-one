@@ -2,7 +2,7 @@
 
 > **本文回答**：新增一个特性需要改哪些文件？模板长什么样？哪些事情不能做？如何判断设置应该实时生效还是重建特性？
 >
-> 当前实际参考实现：[附件管理](features/attachments.md)（`src/features/attachments/`）和[笔记漫游](features/note-roaming.md)（`src/features/note-roaming/`）。
+> 当前实际参考实现：[附件管理](features/attachments.md)（`src/features/attachments/`）、[笔记漫游](features/note-roaming.md)（`src/features/note-roaming/`）和 [Markdown 演示](features/slides.md)（`src/features/slides/`）。
 
 ## 1. 开始之前
 

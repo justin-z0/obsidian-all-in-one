@@ -2,7 +2,7 @@
 
 > **本文回答**：哪些逻辑必须自动化测试？如何在不启动 Obsidian 的情况下测试生命周期？哪些内容只能手动验收？
 >
-> 当前实际测试参考：[附件管理](features/attachments.md) 对应的 `tests/features/attachments/`，以及[笔记漫游](features/note-roaming.md) 对应的 `tests/features/note-roaming/`。
+> 当前实际测试参考：[附件管理](features/attachments.md) 对应的 `tests/features/attachments/`、[笔记漫游](features/note-roaming.md) 对应的 `tests/features/note-roaming/`，以及 [Markdown 演示](features/slides.md) 对应的 `tests/features/slides/`。
 
 ## 1. 测试原则
 
