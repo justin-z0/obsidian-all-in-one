@@ -97,7 +97,7 @@ export const zh: Record<MessageKey, string> = {
 
   'features.slides.name': 'Markdown 演示',
   'features.slides.description':
-    '按标题层级把当前笔记转换为全屏演示页：H1 为主题页，H2 为正文页，无需添加分隔线。',
+    '按标题层级把当前笔记转换为全屏演示页：H1 为主题页，H2 为正文页，每个 H3 独立成页，无需添加分隔线。',
   'features.slides.showBreadcrumb': '显示正文页页眉',
   'features.slides.showBreadcrumbDesc':
     '默认关闭；打开后在正文页顶部显示“一级菜单-二级菜单”。',
@@ -106,9 +106,6 @@ export const zh: Record<MessageKey, string> = {
     '连接一级和二级标题，默认“-”；最多 3 个字符。',
   'features.slides.showPageNumber': '显示页码',
   'features.slides.showProgress': '显示进度条',
-  'features.slides.autoFit': '自动缩放内容',
-  'features.slides.autoFitDesc':
-    '内容超出页面时自动缩小字号，最低 50%；关闭后改为页内滚动。',
   'features.slides.colorScheme': '配色',
   'features.slides.colorSchemeDesc':
     '跟随 Obsidian 主题，或强制浅色/深色画布。',

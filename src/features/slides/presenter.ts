@@ -1,4 +1,4 @@
-/** Presentation UI: full-screen modal, keyboard/pointer navigation, auto-fit, and cleanup. */
+/** Presentation UI: full-screen modal, keyboard/pointer navigation, page scrolling, and cleanup. */
 import { Component, Modal, Notice } from 'obsidian';
 import type { App, KeymapEventHandler, TFile } from 'obsidian';
 import { t } from '../../i18n';
@@ -221,15 +221,29 @@ export class SlidesModal extends Modal {
     };
 
     bind([], 'ArrowRight', () => this.deck?.next());
-    bind([], 'ArrowDown', () => this.deck?.next());
+    bind([], 'ArrowDown', () => this.advance(0.2));
     bind([], ' ', () => this.deck?.next());
-    bind([], 'PageDown', () => this.deck?.next());
+    bind([], 'PageDown', () => this.advance(0.85));
     bind([], 'ArrowLeft', () => this.deck?.previous());
-    bind([], 'ArrowUp', () => this.deck?.previous());
-    bind([], 'PageUp', () => this.deck?.previous());
+    bind([], 'ArrowUp', () => this.retreat(0.2));
+    bind([], 'PageUp', () => this.retreat(0.85));
     bind(['Shift'], ' ', () => this.deck?.previous());
     bind([], 'Home', () => this.deck?.first());
     bind([], 'End', () => this.deck?.last());
+  }
+
+  private advance(fraction: number): void {
+    if (this.deck?.scrollActive(1, fraction)) {
+      return;
+    }
+    this.deck?.next();
+  }
+
+  private retreat(fraction: number): void {
+    if (this.deck?.scrollActive(-1, fraction)) {
+      return;
+    }
+    this.deck?.previous();
   }
 
   private bindFullscreenExit(): void {
@@ -264,6 +278,15 @@ export class SlidesModal extends Modal {
       this.contentEl.contains(selection.anchorNode)
     ) {
       return;
+    }
+
+    // Clicking the page scrollbar should scroll, not advance to the next page.
+    const scrollBody = event.target.closest<HTMLElement>('.aio-slides-body');
+    if (scrollBody && event.target === scrollBody) {
+      const bodyRect = scrollBody.getBoundingClientRect();
+      if (event.clientX >= bodyRect.left + scrollBody.clientWidth) {
+        return;
+      }
     }
 
     const stage = this.stageWrap;

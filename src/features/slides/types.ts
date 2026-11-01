@@ -7,7 +7,6 @@ export type SlidesOptions = {
   breadcrumbSeparator: string;
   showPageNumber: boolean;
   showProgress: boolean;
-  autoFit: boolean;
   colorScheme: SlidesColorScheme;
   transition: SlidesTransition;
 };

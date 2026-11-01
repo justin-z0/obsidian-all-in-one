@@ -124,19 +124,108 @@ describe('planSlides', () => {
     expect(sectionAt(slides, 1).title).toBe('主题 A');
   });
 
-  it('keeps H3 and deeper headings inside the content page', () => {
+  it('starts a new content page for each H3', () => {
     const slides = planSlides(
-      [heading(1, '主题 A'), heading(2, 'A1'), heading(3, '细节'), content('内容')],
+      [
+        heading(1, '主题 A'),
+        heading(2, 'A1'),
+        content('A1 概述'),
+        heading(3, '细节 1'),
+        content('内容 1'),
+        heading(3, '细节 2'),
+        content('内容 2'),
+      ],
+      '笔记',
+    );
+
+    expect(slides).toHaveLength(4);
+    expect(contentAt(slides, 1).blocks).toEqual([
+      heading(2, 'A1'),
+      content('A1 概述'),
+    ]);
+    expect(contentAt(slides, 2)).toMatchObject({
+      title: '细节 1',
+      breadcrumb: ['主题 A', 'A1'],
+      blocks: [heading(3, '细节 1'), content('内容 1')],
+    });
+    expect(contentAt(slides, 3)).toMatchObject({
+      title: '细节 2',
+      breadcrumb: ['主题 A', 'A1'],
+      blocks: [heading(3, '细节 2'), content('内容 2')],
+    });
+  });
+
+  it('keeps H4-H6 inside the current H3 page', () => {
+    const slides = planSlides(
+      [
+        heading(1, '主题 A'),
+        heading(2, 'A1'),
+        heading(3, '细节'),
+        heading(4, '补充'),
+        content('说明'),
+        heading(5, '更细'),
+        content('更多'),
+      ],
+      '笔记',
+    );
+
+    expect(slides).toHaveLength(2);
+    expect(contentAt(slides, 1).blocks).toEqual([
+      heading(3, '细节'),
+      heading(4, '补充'),
+      content('说明'),
+      heading(5, '更细'),
+      content('更多'),
+    ]);
+  });
+
+  it('does not leave a title-only H2 page when H3 follows immediately', () => {
+    const slides = planSlides(
+      [
+        heading(1, '主题 A'),
+        heading(2, 'A1'),
+        heading(3, '细节'),
+        content('内容'),
+      ],
+      '笔记',
+    );
+
+    expect(slides).toHaveLength(2);
+    expect(contentAt(slides, 1)).toMatchObject({
+      title: '细节',
+      breadcrumb: ['主题 A', 'A1'],
+      blocks: [heading(3, '细节'), content('内容')],
+    });
+  });
+
+  it('keeps all H2 content on one page when the H2 has no H3', () => {
+    const slides = planSlides(
+      [
+        heading(1, '主题 A'),
+        heading(2, 'A1'),
+        content('第一段'),
+        content('第二段'),
+      ],
       '笔记',
     );
 
     expect(slides).toHaveLength(2);
     expect(contentAt(slides, 1).blocks).toEqual([
       heading(2, 'A1'),
-      heading(3, '细节'),
-      content('内容'),
+      content('第一段'),
+      content('第二段'),
     ]);
-    expect(contentAt(slides, 1).breadcrumb).toEqual(['主题 A', 'A1']);
+  });
+
+  it('uses the H1 breadcrumb for H3 pages directly under H1', () => {
+    const slides = planSlides(
+      [heading(1, '主题 A'), heading(3, '细节'), content('内容')],
+      '笔记',
+    );
+
+    expect(slides).toHaveLength(2);
+    expect(contentAt(slides, 1).breadcrumb).toEqual(['主题 A']);
+    expect(contentAt(slides, 1).title).toBe('细节');
   });
 
   it('turns a horizontal rule into a page break without empty pages', () => {

@@ -8,7 +8,6 @@ export const DEFAULT_SLIDES_OPTIONS: SlidesOptions = {
   breadcrumbSeparator: '-',
   showPageNumber: true,
   showProgress: true,
-  autoFit: true,
   colorScheme: 'vault',
   transition: 'fade',
 };
@@ -58,15 +57,6 @@ export const slidesSettings: readonly FeatureSetting<SlidesOptions>[] = [
       type: 'toggle',
       key: 'showProgress',
       defaultValue: DEFAULT_SLIDES_OPTIONS.showProgress,
-    },
-  },
-  {
-    name: t('features.slides.autoFit'),
-    desc: t('features.slides.autoFitDesc'),
-    control: {
-      type: 'toggle',
-      key: 'autoFit',
-      defaultValue: DEFAULT_SLIDES_OPTIONS.autoFit,
     },
   },
   {

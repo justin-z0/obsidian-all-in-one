@@ -19,7 +19,7 @@
 1. [特性文档](features/README.md) — 已实现特性的功能、设置、路径算法和手动验收。
 2. [附件管理](features/attachments.md) — 粘贴图片、重命名弹窗、上传命令和链接生成。
 3. [笔记漫游](features/note-roaming.md) — 路径限定、随机选择、侧边栏按钮和专用标签页阅读模式预览。
-4. [Markdown 演示](features/slides.md) — H1/H2 自动分页、铺满屏幕、全屏演示、缩放和边界。
+4. [Markdown 演示](features/slides.md) — H1/H2/H3 自动分页、H3 独立成页、长内容页内滚动、铺满屏幕、全屏演示和边界。
 
 ### 准备新增一个特性
 

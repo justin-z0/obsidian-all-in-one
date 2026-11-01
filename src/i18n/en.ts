@@ -104,7 +104,7 @@ export const en = {
 
   'features.slides.name': 'Markdown Slides',
   'features.slides.description':
-    'Turn the current note into a full-screen deck by heading level: H1 becomes a section page and H2 a content page, with no separators required.',
+    'Turn the current note into a full-screen deck by heading level: H1 becomes a section page, H2 a content page, and each H3 its own page, with no separators required.',
   'features.slides.showBreadcrumb': 'Show content page header',
   'features.slides.showBreadcrumbDesc':
     'Display “section-subsection” at the top of each content page. Off by default.',
@@ -113,9 +113,6 @@ export const en = {
     'Joins the section and subsection headings. Defaults to “-”; at most 3 characters.',
   'features.slides.showPageNumber': 'Show page number',
   'features.slides.showProgress': 'Show progress bar',
-  'features.slides.autoFit': 'Auto-fit content',
-  'features.slides.autoFitDesc':
-    'Shrink text down to 50% when a page overflows; turn off to scroll inside the page.',
   'features.slides.colorScheme': 'Color scheme',
   'features.slides.colorSchemeDesc':
     'Follow the Obsidian theme, or force a light or dark canvas.',

@@ -13,9 +13,6 @@ export interface DeckViewOptions {
   onChange?: (index: number, count: number) => void;
 }
 
-const MIN_FIT_SCALE = 0.5;
-const FIT_STEP = 0.05;
-
 /**
  * Renders the note once with Obsidian's Markdown renderer, then distributes the
  * resulting top-level blocks into fixed-size slide wrappers.
@@ -31,12 +28,9 @@ export class DeckView {
 
   private stage: HTMLElement | null = null;
   private slides: HTMLElement[] = [];
-  private contentBodies: HTMLElement[] = [];
   private readonly slideBodies = new Map<number, HTMLElement>();
   private active = 0;
   private destroyed = false;
-  private fitTimer: number | null = null;
-  private resizeBound = false;
 
   constructor(options: DeckViewOptions) {
     this.app = options.app;
@@ -98,10 +92,7 @@ export class DeckView {
     });
 
     this.bindResize();
-    this.observeImages();
     this.go(0);
-    this.refreshFit();
-    this.scheduleFit(200);
 
     return plans.length;
   }
@@ -161,50 +152,30 @@ export class DeckView {
     return true;
   }
 
-  refreshFit(): void {
-    if (this.destroyed) {
-      return;
+  /**
+   * Scroll the active page before changing slides. Returns false when the page
+   * cannot scroll further in that direction, letting the caller navigate.
+   */
+  scrollActive(direction: -1 | 1, fraction = 0.85): boolean {
+    const body = this.slideBodies.get(this.active);
+    if (!body) {
+      return false;
     }
 
-    this.updateStageUnit();
-
-    for (const body of this.contentBodies) {
-      body.setCssProps({ '--aio-slides-fit': '1' });
-      body.removeClass('is-overflowing');
-
-      if (!this.options.autoFit) {
-        if (body.scrollHeight > body.clientHeight + 1) {
-          body.addClass('is-overflowing');
-        }
-        continue;
-      }
-
-      let scale = 1;
-      while (
-        body.scrollHeight > body.clientHeight + 1 &&
-        scale > MIN_FIT_SCALE
-      ) {
-        scale = Math.max(
-          MIN_FIT_SCALE,
-          Number((scale - FIT_STEP).toFixed(2)),
-        );
-        body.setCssProps({ '--aio-slides-fit': String(scale) });
-      }
-
-      if (body.scrollHeight > body.clientHeight + 1) {
-        body.addClass('is-overflowing');
-      }
+    const max = body.scrollHeight - body.clientHeight;
+    if (max <= 1) {
+      return false;
     }
+
+    const before = body.scrollTop;
+    const step = Math.max(1, Math.round(body.clientHeight * fraction));
+    body.scrollTop = clamp(before + direction * step, 0, max);
+    return Math.abs(body.scrollTop - before) > 1;
   }
 
   destroy(): void {
     this.destroyed = true;
-    if (this.fitTimer !== null) {
-      window.clearTimeout(this.fitTimer);
-      this.fitTimer = null;
-    }
     this.slides = [];
-    this.contentBodies = [];
     this.slideBodies.clear();
     this.stage?.remove();
     this.stage = null;
@@ -249,11 +220,9 @@ export class DeckView {
       const body = inner.createDiv({
         cls: 'aio-slides-body markdown-rendered markdown-preview-view',
       });
-      body.setCssProps({ '--aio-slides-fit': '1' });
       for (const block of plan.blocks) {
         body.appendChild(block.element);
       }
-      this.contentBodies.push(body);
       this.slideBodies.set(index, body);
     }
 
@@ -278,33 +247,9 @@ export class DeckView {
   }
 
   private bindResize(): void {
-    if (this.resizeBound) {
-      return;
-    }
-    this.resizeBound = true;
     this.component.registerDomEvent(window, 'resize', () => {
-      this.scheduleFit(0);
+      this.updateStageUnit();
     });
-  }
-
-  private observeImages(): void {
-    for (const slide of this.slides) {
-      for (const image of Array.from(slide.querySelectorAll('img'))) {
-        this.component.registerDomEvent(image, 'load', () => {
-          this.scheduleFit(0);
-        });
-      }
-    }
-  }
-
-  private scheduleFit(delay: number): void {
-    if (this.fitTimer !== null) {
-      window.clearTimeout(this.fitTimer);
-    }
-    this.fitTimer = window.setTimeout(() => {
-      this.fitTimer = null;
-      this.refreshFit();
-    }, delay);
   }
 
   private updateStageUnit(): void {

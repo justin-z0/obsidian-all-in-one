@@ -23,7 +23,6 @@ describe('slides options', () => {
       breadcrumbSeparator: '-',
       showPageNumber: true,
       showProgress: true,
-      autoFit: true,
       colorScheme: 'vault',
       transition: 'fade',
     });
